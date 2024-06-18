@@ -1,21 +1,34 @@
-// import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Card from "../components/Card";
+import { CreatorData } from "../creatorTypes";
 
 
 export default function ShowCreators() {
-    // const { creators } = useLoaderData()
+    const navigate = useNavigate()
+    // @ts-ignore
+    const { creators } = useLoaderData()
 
-    // console.log(creators)
+    if (creators.error || creators.status !== 200) {
+        return <div>There was an error loading the data</div>
+    }
     return (
         <div className='container'>
             <h1>Content Creators</h1>
             <main className="flex flex-wrap gap-2">
                 {
-                    [1, 2, 3, 4, 5].map((creator) => {
-                        return <Card key={creator} />
+                    creators.data.map((creator: CreatorData) => {
+                        return <Card key={creator.id} imageURL={creator.imageURL}
+                            instagram={creator.instagram} twitter={creator.twitter}
+                            youtube={creator.youtube} name={creator.name} title={creator.title}
+                            description={creator.description}
+                            id={creator.id}
+                        />
                     })
                 }
             </main>
+            <button onClick={() => navigate('add')}>
+                Add More Creator
+            </button>
         </div>
     )
 }

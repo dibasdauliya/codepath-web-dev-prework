@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
 import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
-
-interface CreatorData {
-    name: string;
-    title: string;
-    description: string;
-    insta: string;
-    twitter: string;
-    youtube: string;
-}
+import { CreatorData } from '../creatorTypes';
+import { FaX, FaXTwitter } from 'react-icons/fa6';
 
 interface CreatorFormProps {
     title: string;
@@ -23,9 +16,10 @@ export default function CreatorForm({
         name: '',
         title: '',
         description: '',
-        insta: '',
+        instagram: '',
         twitter: '',
         youtube: '',
+        imgURL: ''
     });
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -48,12 +42,12 @@ export default function CreatorForm({
                     <textarea value={details.description} onChange={e => setDetails({ ...details, description: e.target.value })} />
                 </label>
 
-                <label htmlFor="insta">Instagram <FaInstagram />
-                    <input placeholder='@username' type="text" value={details.insta} onChange={e => setDetails({ ...details, insta: e.target.value })} />
+                <label htmlFor="instagram">Instagram <FaInstagram />
+                    <input placeholder='@username' type="text" value={details.instagram} onChange={e => setDetails({ ...details, instagram: e.target.value })} />
                 </label>
 
-                <label htmlFor="twitter">Twitter <FaTwitter />
-                    <input placeholder='@username' type="text" value={details.twitter} onChange={e => setDetails({ ...details, twitter: e.target.value })} />
+                <label htmlFor="twitter">Twitter <FaXTwitter />
+                    <input placeholder='username' type="text" value={details.twitter} onChange={e => setDetails({ ...details, twitter: e.target.value })} />
                 </label>
 
                 <label htmlFor="youtube">YouTube <FaYoutube />

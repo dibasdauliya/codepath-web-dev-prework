@@ -1,43 +1,46 @@
-import React from 'react'
 import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
 import { useNavigate } from "react-router-dom";
+import { CreatorData } from '../creatorTypes';
 
 
-export default function Card() {
+export default function Card({
+    name, title, description, instagram, twitter, youtube, imageURL, id
+}: CreatorData) {
     const navigate = useNavigate();
 
-    const handleEdit = () => {
-        console.log('Edit')
-        navigate('/edit')
+    function handleEdit(id: number) {
+        navigate(`/edit/${id}`)
     }
     return (
         <article style={{ width: "300px" }}>
             <header className='flex justify-between flex-wrap'>
                 <div className='flex flex-col gap-2'>
-                    <img src="https://via.placeholder.com/150" alt="placeholder" />
-                    <a href="">
+                    <img src={imageURL} alt={name} style={{ width: "100%" }} />
+                    <a href={`/creator/${id}`}>
                         <strong>
-                            Robert Denero
+                            {name}
                         </strong>
                     </a>
                     <p>
-                        YouTuber
+                        {title}
                     </p>
                 </div>
                 <div className='flex gap-2 align-center'>
-                    <button onClick={handleEdit}>Edit</button>
+                    <button onClick={() => handleEdit(id)}>Edit</button>
                     <button>Delete</button>
                 </div>
             </header>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt ea laborum nam facilis provident doloremque veritatis sit, fugiat consequuntur praesentium?
+            <p>
+                {description}
+            </p>
             <footer className='flex gap-2'>
-                <a href="">
+                <a href={`https://instagram.com/${instagram}`}>
                     <FaInstagram />
                 </a>
-                <a href="">
+                <a href={`https://twitter.com/${twitter}`}>
                     <FaTwitter />
                 </a>
-                <a href="">
+                <a href={`https://youtube.com/${youtube}`}>
                     <FaYoutube />
                 </a>
             </footer>
