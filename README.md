@@ -30,7 +30,8 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/9DnV4GjlFFY?si=UOLxKVzRPN0j42rf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+[![Walkthrough](https://img.youtube.com/vi/9DnV4GjlFFY/0.jpg)](https://www.youtube.com/watch?v=9DnV4GjlFFY)
+
 
 <!-- Replace this with whatever GIF tool you used! -->
 Couldn't create a GIF because Kap crashed!
