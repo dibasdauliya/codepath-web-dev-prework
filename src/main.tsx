@@ -7,7 +7,7 @@ import {
   RouterProvider,
 } from 'react-router-dom'
 import { supabase } from './client.ts'
-import ShowCreators from './pages/ShowCreatprs.tsx'
+import ShowCreators from './pages/ShowCreators.tsx'
 import EditCreator from './pages/EditCreator.tsx'
 import AddCreator from './pages/AddCreator.tsx'
 import ViewCreator from './pages/ViewCreator.tsx'
