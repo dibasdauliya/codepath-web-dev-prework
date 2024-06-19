@@ -6,5 +6,5 @@ export interface CreatorData {
     twitter?: string;
     youtube?: string;
     imageURL: string;
-    id: number;
+    id?: number;
 }

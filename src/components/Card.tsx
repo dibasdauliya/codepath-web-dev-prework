@@ -1,6 +1,7 @@
 import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
 import { useNavigate } from "react-router-dom";
 import { CreatorData } from '../creatorTypes';
+import { supabase } from '../client';
 
 
 export default function Card({
@@ -8,9 +9,24 @@ export default function Card({
 }: CreatorData) {
     const navigate = useNavigate();
 
-    function handleEdit(id: number) {
+    function handleEdit() {
         navigate(`/edit/${id}`)
     }
+
+    async function handleDelete() {
+        if (confirm('Are you sure you want to delete this creator?')) {
+
+            const res = await supabase.from('creators').delete().eq('id', Number(id))
+    
+            if (res.status === 204) {
+                alert('Creator deleted successfully')
+                navigate('/')
+            } else {
+                alert('There was an error deleting the creator')
+             }
+        }
+    }
+
     return (
         <article style={{ width: "300px" }}>
             <header className='flex justify-between flex-wrap'>
@@ -26,23 +42,32 @@ export default function Card({
                     </p>
                 </div>
                 <div className='flex gap-2 align-center'>
-                    <button onClick={() => handleEdit(id)}>Edit</button>
-                    <button>Delete</button>
+                    <button onClick={handleEdit}>Edit</button>
+                    <button onClick={handleDelete}>Delete</button>
                 </div>
             </header>
             <p>
                 {description}
             </p>
             <footer className='flex gap-2'>
-                <a href={`https://instagram.com/${instagram}`}>
-                    <FaInstagram />
-                </a>
-                <a href={`https://twitter.com/${twitter}`}>
-                    <FaTwitter />
-                </a>
-                <a href={`https://youtube.com/${youtube}`}>
-                    <FaYoutube />
-                </a>
+                {
+                    instagram &&
+                    <a href={`https://instagram.com/${instagram}`}>
+                        <FaInstagram />
+                    </a>
+                }
+                {
+                    twitter &&
+                    <a href={`https://twitter.com/${twitter}`}>
+                        <FaTwitter />
+                    </a>
+                }
+                {
+                    youtube &&
+                    <a href={`https://youtube.com/${youtube}`}>
+                        <FaYoutube />
+                    </a>
+                }
             </footer>
         </article>
     )

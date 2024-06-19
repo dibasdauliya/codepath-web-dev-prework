@@ -17,7 +17,6 @@ import { loader as editCreatorLoader } from './pages/EditCreator.tsx'
 // https://reactrouter.com/en/main/start/tutorial#loading-data
 export async function loader() {
   const creators = await supabase.from('creators').select('*')
-  console.log(creators)
   return { creators }
 }
 
