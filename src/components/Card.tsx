@@ -1,5 +1,5 @@
 import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CreatorData } from '../creatorTypes';
 import { supabase } from '../client';
 
@@ -32,11 +32,11 @@ export default function Card({
             <header className='flex justify-between flex-wrap'>
                 <div className='flex flex-col gap-2'>
                     <img src={imageURL} alt={name} style={{ width: "100%" }} />
-                    <a href={`/creator/${id}`}>
+                    <Link to={`/creator/${id}`}>
                         <strong>
                             {name}
                         </strong>
-                    </a>
+                    </Link>
                     <p>
                         {title}
                     </p>

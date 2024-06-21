@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { supabase } from "../client"
 import Card from "../components/Card";
 import { FaLongArrowAltLeft } from "react-icons/fa";
@@ -21,9 +21,9 @@ export default function ViewCreator() {
 
     return (
         <section className="container">
-            <a href="/">
+            <Link to="/">
                 <FaLongArrowAltLeft /> View All Creators
-            </a>
+            </Link>
             <Card imageURL={creatorData.imageURL}
                 instagram={creatorData.instagram} twitter={creatorData.twitter}
                 youtube={creatorData.youtube} name={creatorData.name} title={creatorData.title}
